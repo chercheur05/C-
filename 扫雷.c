@@ -81,46 +81,12 @@ void UpdataShowMap(char show_map[ROW + 2][COL + 2], char mine_map[ROW + 2][COL +
 	//row的范围[1,9]
 	int count = 0;
 	//如果不加边框，必须保证每个坐标访问的时候都不能越界
-	//代码就要多加许多的 if 判定
-	//if (row - 1 >= 0 && row + 1 < ROW + 1
-	//	&& col - 1 >= 0 && col + 1 < COL + 1) {
-	//	if (mine_map[row - 1][col - 1] == '1') {
-	//		++count;
-	//	}
-	//}
-
-	//有了边框之后，代码就可以简单写成
-	//if (mine_map[row - 1][col - 1] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row - 1][col] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row - 1][col + 1] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row][col - 1] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row][col + 1] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row + 1][col - 1] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row + 1][col] == '1') {
-	//	++count;
-	//}
-	//if (mine_map[row + 1][col+1] == '1') {
-	//	++count;
-	//}
-	//更简化的方法
-		count = (mine_map[row - 1][col - 1] - '0') + (mine_map[row - 1][col] - '0')
-			+ (mine_map[row - 1][col + 1] - '0') + (mine_map[row][col - 1] - '0')
-			+ (mine_map[row][col + 1] - '0') + (mine_map[row + 1][col - 1] - '0')
-			+ (mine_map[row + 1][col] - '0') + (mine_map[row + 1][col + 1] - '0');
-		//必须是个位数，否则无法转换为字符格式
-		show_map[row][col] = '0' + count;
+	count = (mine_map[row - 1][col - 1] - '0') + (mine_map[row - 1][col] - '0')
+		+ (mine_map[row - 1][col + 1] - '0') + (mine_map[row][col - 1] - '0')
+		+ (mine_map[row][col + 1] - '0') + (mine_map[row + 1][col - 1] - '0')
+		+ (mine_map[row + 1][col] - '0') + (mine_map[row + 1][col + 1] - '0');
+	//必须是个位数，否则无法转换为字符格式
+	show_map[row][col] = '0' + count;
 }
 
 void Updata(char show_map[ROW+2][COL+2], char mine_map[ROW + 2][COL + 2],int row,int col) {
